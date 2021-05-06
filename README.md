@@ -2,7 +2,7 @@
 
 A hastily-made IDE for the Simple Computer architecture presented in chapter 8 of *Logic and Computer Design Fundamentals (5 ed.)* by M. Morris Mano, Charles R. Kime, and Tom Martin.
 
-[Try out SCAsm](https://nununoisy.github.io/scasm/index.html)
+[Try out SCAsm](https://nununoisy.github.io/SCAsm/)
 
 ## Features
 

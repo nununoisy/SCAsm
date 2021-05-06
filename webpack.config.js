@@ -11,7 +11,7 @@ module.exports = {
     compress: true,
     port: 3000,
     watchContentBase: true,
-    publicPath: '/public/',
+    publicPath: '/scasm/',
   },
   module: {
     rules: [
