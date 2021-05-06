@@ -30,8 +30,8 @@ export default function monacoLang(monaco) {
         tokenizer: {
             root: [
                 [/\/\/.*/, 'scasm-comment'],
-                [/(mov[ab]|inc|ad[di]|sub|dec|and|or|xor|not|sh[rl]|ldi?|st|br[zn]|jmp)/i, 'scasm-op'],
-                [/r[0-7]/i, 'scasm-reg'],
+                [/([Mm][Oo][Vv][AaBb]|[Ii][Nn][Cc]|[Aa][Dd][DdIi]|[Ss][Uu][Bb]|[Dd][Ee][Cc]|[Aa][Nn][Dd]|[Xx]?[Oo][Rr]|[Nn][Oo][Tt]|[Ss][Hh][RrLl]|[Ll][Dd][Ii]?|[Ss][Tt]|[Bb][Rr][ZzNn]|[Jj][Mm][Pp])/, 'scasm-op'],
+                [/[Rr][0-7]/i, 'scasm-reg'],
                 [/(?<=, *)[0-9]+/, 'scasm-imm'],
                 [/\..+(:|$)/, 'scasm-label'],
                 [/%(SLDI|PLDI|ISTK|CALL|RET)/, 'scasm-imacro']

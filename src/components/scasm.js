@@ -128,11 +128,11 @@ export default function scasm(source) {
                 console.log(lineToAddrMapping);
                 let [op, ...opargs] = args;
                 opargs = opargs.join('').replace(/\s/g,'').split(',');
-                let opargv = opargs.map(opa=>parseInt(opa.replace(/r/g,'')));
+                let opargv = opargs.map(opa=>parseInt(opa.replace(/[Rr]/g,'')));
                 console.log(opargs, opargv);
                 let opargt = opargs.map((opa,i)=>{
                     console.log('op', i, opa);
-                    if (opa.startsWith('r') && opargv[i] >= 0 && opargv[i] <= 7)
+                    if ((opa.startsWith('r') || opa.startsWith('R')) && opargv[i] >= 0 && opargv[i] <= 7)
                         return 'reg';
                     else if (opa.startsWith('.') && Object.keys(symboltable).includes(opa.replace('.','')))
                         return 'addr';
@@ -146,7 +146,7 @@ export default function scasm(source) {
                         return reject(`line ${lineidx}: Unknown argument ${opargs[i]}\n${line}`);
                 });
 
-                switch (op) {
+                switch (op.toLowerCase()) {
                     case 'mova':
                         if (!schemaEqual(opargt, ['reg','reg'])) reject(`line ${lineidx}: Invalid args for mova`);
                         asmhex += hex4b(generateInstr(0x00, opargv[0], opargv[1], 0));
