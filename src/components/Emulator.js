@@ -359,7 +359,7 @@ export default function Emulator(props) {
             <div className='emulator-display-container'>
                 <pre className={`emulator-display${error ? ' emulator-display-error' : ''}`}>
                     <code>
-                        {(scasmint || !symbolTableReady) ? 'Assembling...' : error ? 'Error: ' + error.toString() : iasmsrc /* generateRawASM(asmsource, symboltable) */}
+                        {(scasmint || !symbolTableReady) ? 'Assembling...' : error ? 'Error: ' + error.toString() : `// SCAsm intermediate assembly\n// github.com/nununoisy/scasm\n${iasmsrc}` /* generateRawASM(asmsource, symboltable) */}
                     </code>
                 </pre>
                 <pre className={`emulator-display${error ? ' emulator-display-error' : ''}`}>
