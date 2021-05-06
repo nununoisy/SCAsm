@@ -58,9 +58,9 @@ export default function scasm(source) {
                        .replace(/(?<!\/\/)0b([01]{1,16})/g, (_,nh)=>parseInt(nh, 2).toString(10))
                        .replace(/(?<!\/\/)0o([0-8]{1,5})/g, (_,nh)=>parseInt(nh, 8).toString(10))
                        .replace(/(?<!\/\/)0x([0-9a-fA-F]{1,4})/g, (_,nh)=>parseInt(nh, 16).toString(10))
-                       .replace(/^ *%SLDI (r[0-7]), *([0-9]{0,5})$/gm, (_,r,nh)=>sldi(parseInt(nh, 10), r))
+                       .replace(/^ *%SLDI ([Rr][0-7]), *([0-9]{0,5})$/gm, (_,r,nh)=>sldi(parseInt(nh, 10), r))
                        .replace(/^ *%ISTK$/gm, '//%M ISTK\nxor r7,r7,r7\n//%ENDM')
-                       .replace(/^ *%CALL (r[0-7])$/gm, '//%M CALL $1\n%PLDI\ninc r7,r7\nst r7,r6\njmp $1\n//%ENDM')
+                       .replace(/^ *%CALL ([Rr][0-7])$/gm, '//%M CALL $1\n%PLDI\ninc r7,r7\nst r7,r6\njmp $1\n//%ENDM')
                        .replace(/^ *%RET$/gm, '//%M RET\nld r6,r7\ndec r7,r7\njmp r6\n//%ENDM');
 
         console.log('pass 0', source);
@@ -94,7 +94,7 @@ export default function scasm(source) {
         }
 
         source = lines.join('\n')
-                      .replace(/^ *%SLDI (r[0-7]), *\.([A-Za-z_][A-Za-z0-9_]*)$/gm, (_,r,s)=>sldi(parseInt(symboltable[s], 10), r))
+                      .replace(/^ *%SLDI ([Rr][0-7]), *\.([A-Za-z_][A-Za-z0-9_]*)$/gm, (_,r,s)=>sldi(parseInt(symboltable[s], 10), r))
 
         iasmsrc = source.split('\n')
                         .map(l=>l.trim())
