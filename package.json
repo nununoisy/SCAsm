@@ -1,0 +1,35 @@
+{
+  "name": "scemureact",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "deploy": "gh-pages -d dist",
+    "dev": "webpack serve --mode development"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.13.16",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.4",
+    "eslint": "^7.25.0",
+    "eslint-plugin-react": "^7.23.2",
+    "gh-pages": "^3.1.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.35.1",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@monaco-editor/react": "^4.1.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hex-editor": "^0.3.0",
+    "styled-components": "^5.2.3"
+  }
+}
